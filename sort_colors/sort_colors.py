@@ -21,6 +21,26 @@ class Solution:
             else:
                 k += 1
 
+    def sortColors_2(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        count = [0] * 3
+
+        for i in nums:
+            count[i] += 1
+
+        zero, one, two = count
+
+        for i in range(zero):
+            nums[i] = 0
+
+        for i in range(zero, zero + one):
+            nums[i] = 1
+
+        for i in range(zero + one, zero + one + two):
+            nums[i] = 2
+
 if __name__ == '__main__':
     sortColors = Solution().sortColors
     arr = [2, 0, 1]
