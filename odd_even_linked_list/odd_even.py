@@ -21,3 +21,21 @@ class Solution:
             even = even.next
         odd.next = even_head
         return head
+
+    def oddEvenList_1(self, head):
+
+        if not head or not head.next:
+            return head
+
+        odd = head
+        even_head = even = head.next
+        cur = head.next.next
+
+        while cur:
+            odd.next = cur
+            odd = cur
+            even.next = cur.next
+            even = cur.next
+            cur = cur.next and cur.next.next or None
+        odd.next = even_head
+        return head
