@@ -2,6 +2,25 @@
 
 
 class Solution:
+    def dailyTemperatures_0(self, T: List[int]) -> List[int]:
+        '''
+        Since we know the max size of stack, we can use array of that size
+        and have a variable to track the last element of a stack
+        '''
+        from collections import deque
+        res = [0] * len(T)
+        stack = [0] * len(T)
+        top = 0
+        for i in range(len(T)):
+            while top > 0 and T[stack[top]] < T[i]:
+                idx = stack[top]
+                top -= 1
+                res[idx] = i - idx
+            top += 1
+            stack[top] = i
+
+        return res
+
     def dailyTemperatures(self, T):
         ''' Version where pushing only indexes onto stack'''
         from collections import deque
